@@ -10,27 +10,27 @@ rooms = { 'data': { 'rooms':
   }
 }
 
-# print(rooms['data']['rooms'][0])
 
+room_num = '201'
 
 for room in rooms['data']['rooms']:
     # print(room)
-    # print(room['room_number'])
-    if room['room_number'] == "201":
-        # print(room['id'])
-        room_201_id = room['id']
-        room_201_capacity = room['capacity']
-        print(f'Room 201 id: {room_201_id}') #1
-        print(f'Room 201 capacity: {room_201_capacity}') #50
+    if room['room_number'] == room_num:
+        room_id = room['id']
+        room_capacity = room['capacity']
+        print(f'Room {room_num} id: {room_id}') #1
+        print(f'Room {room_num} capacity: {room_capacity}') #50
 
 
-
-# print(rooms['data']['events'][0])
 
 for event in rooms['data']['events']:
-    # print(event)
+  # print(event)
 
-    if event['attendees'] < room_201_capacity:
-        print('Over capacity!')
-    else:
-        print('They will all fit.')
+  if event['id'] == room_id:
+      # print(event)
+      print(f"The event #{event['id']} in {room_num} will have {event['attendees']} people.")
+      # id room_id, start_time, end_time, attendees
+      if event['attendees'] < room_capacity:
+          print('The room is over capacity!')
+      else:
+          print('Everyone will fit in the room.')
